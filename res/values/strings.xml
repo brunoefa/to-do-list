@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tarefas</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo_cadastro">"Hora de cadastrar\numa tarefa"</string>
+    <string name="hint_tarefa">Tarefa</string>
+    <string name="hint_categoria">Categoria</string>
+    <string name="hitn_data">Concluir até</string>
+    <string name="importancia_baixa">Baixa</string>
+    <string name="importancia_media">Média</string>
+    <string name="importancia_alta">Alta</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="salvar">SALVAR</string>
+    <string name="acao_cadastrar">Nova tarefa</string>
+    <string name="acao_cancelar">Cancelar</string>
+    <string name="title_activity_listagem">ListagemActivity</string>
+
+</resources>

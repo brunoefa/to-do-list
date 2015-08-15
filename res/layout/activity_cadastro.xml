@@ -1,0 +1,181 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.senai.tarefas.activity.CadastroActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:padding="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_cadastro"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:textSize="33sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="20dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="2dp"
+                android:id="@+id/img_check"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/check" />
+
+            <EditText
+                android:id="@+id/et_tarefa"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hint_tarefa"
+                android:paddingTop="20dp" >
+                
+                <requestFocus />
+                
+                </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="2dp"
+                android:id="@+id/img_label"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/label" />            
+
+            <EditText
+                android:id="@+id/et_categoria"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hint_categoria"
+                android:paddingTop="20dp" >
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/img_due_date"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/watch" />                 
+
+            <EditText
+                android:id="@+id/et_conclusao"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/hitn_data"
+                android:inputType="date"
+                android:paddingTop="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/img_due_priority"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/important" />               
+
+            <RadioGroup
+                android:id="@+id/rg_prioridade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp" >
+
+                <RadioButton
+                    android:id="@+id/rb_baixa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/importancia_baixa" />
+
+                <RadioButton
+                    android:id="@+id/rb_media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/importancia_media" />
+
+                <RadioButton
+                    android:id="@+id/rb_alta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/importancia_alta" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="20dp" >
+
+        <TextView
+            android:id="@+id/tv_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:textColor="@android:color/darker_gray"
+            android:onClick="cancelar"
+            android:clickable="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tv_salvar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="@string/salvar"
+            android:onClick="salvar"
+            android:clickable="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+</LinearLayout>
