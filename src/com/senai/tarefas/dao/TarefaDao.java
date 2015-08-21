@@ -17,15 +17,7 @@ public class TarefaDao {
 		dbHelper = new AppDatabase(context);
 		database = dbHelper.getDatabase();
 	}
-	
-	private void open() {
-		database = dbHelper.getDatabase();
-	}
-	
-	private void close() {
-		dbHelper.closeConnection();
-	}
-	
+
 	public long salvar(Tarefa t) {
 
 		ContentValues values = new ContentValues();
@@ -34,9 +26,7 @@ public class TarefaDao {
 		values.put(AppDatabase.COLUMN_DATA_CONCLUSAO , t.getDataConclusao());
 		values.put(AppDatabase.COLUMN_PRIORIDADE , t.getPrioridade());
 		
-		open();
 		long insertId = database.insert(AppDatabase.TABLE_TAREFAS, null, values);
-		close();
 		
 		return insertId;
 	}

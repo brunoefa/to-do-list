@@ -1,7 +1,5 @@
 package com.senai.tarefas.activity;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,34 +19,23 @@ public class CadastroActivity extends Activity {
 
 	private TarefaDao tarefaDao;
 	private Tarefa tarefa;
-	ArrayList<String> listaTarefa = new ArrayList<String>();
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cadastro);
 		tarefaDao = new TarefaDao(this);
-		Intent intent = getIntent();
-		ArrayList<String> listaTarefaAuxiliar = intent.getStringArrayListExtra("listaTarefa");
-		if (listaTarefaAuxiliar != null) {
-			listaTarefa = listaTarefaAuxiliar;
-		}
 	}
 	
 	public void salvar(View view) {
 		capturarDados();
-		adicionarTarefa(tarefa.toString());
-		mostrarListagem();
-	}
-	
-	private void adicionarTarefa(String tarefa) {
-		listaTarefa.add(tarefa);
+		long id = tarefaDao.salvar(this.tarefa);
+		mostrarMensagem("A tarefa salva tem o id = " + id);
+//		mostrarListagem();
 	}
 	
 	private void mostrarListagem() {
 		Intent intent = new Intent(this, ListagemActivity.class);
-		intent.putStringArrayListExtra("listaTarefa", listaTarefa);
 		startActivity(intent);
 	}
 	
