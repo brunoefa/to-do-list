@@ -11,13 +11,13 @@ public class AppDatabase {
 
 	private static final String DATABASE_NAME = "tarefas.db";
 	
-	private static final String TABLE_TAREFAS 		  = "tarefas";
-	private static final String COLUMN_ID 			  = "_id";
-	private static final String COLUMN_TAREFA 		  = "tarefa";
-	private static final String COLUMN_CATEGORIA 	  = "categoria";
-	private static final String COLUMN_DATA_CONCLUSAO = "dataconclusao";
-	private static final String COLUMN_PRIORIDADE 	  = "prioridade";
-	private static final String COLUMN_CONCLUIDO      = "concluido";
+	public static final String TABLE_TAREFAS 		  = "tarefas";
+	public static final String COLUMN_ID 			  = "_id";
+	public static final String COLUMN_TAREFA 		  = "tarefa";
+	public static final String COLUMN_CATEGORIA 	  = "categoria";
+	public static final String COLUMN_DATA_CONCLUSAO  = "dataconclusao";
+	public static final String COLUMN_PRIORIDADE 	  = "prioridade";
+	public static final String COLUMN_CONCLUIDO       = "concluido";
 	
 	private static final String TABLE_TAREFAS_CREATE = "create table " + TABLE_TAREFAS + " ("
 			+ COLUMN_ID 			+ " integer primary key autoincrement, "

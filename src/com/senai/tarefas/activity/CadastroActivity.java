@@ -14,17 +14,21 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.senai.tarefas.R;
+import com.senai.tarefas.dao.TarefaDao;
 import com.senai.tarefas.modelo.Tarefa;
 
 public class CadastroActivity extends Activity {
 
+	private TarefaDao tarefaDao;
 	private Tarefa tarefa;
 	ArrayList<String> listaTarefa = new ArrayList<String>();
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cadastro);
+		tarefaDao = new TarefaDao(this);
 		Intent intent = getIntent();
 		ArrayList<String> listaTarefaAuxiliar = intent.getStringArrayListExtra("listaTarefa");
 		if (listaTarefaAuxiliar != null) {
