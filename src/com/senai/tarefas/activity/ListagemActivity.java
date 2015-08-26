@@ -1,5 +1,6 @@
 package com.senai.tarefas.activity;
 
+
 import java.util.ArrayList;
 
 import android.app.ListActivity;
@@ -7,33 +8,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.senai.tarefas.R;
+import com.senai.tarefas.adapter.TarefaAdapter;
+import com.senai.tarefas.modelo.Tarefa;
 
 public class ListagemActivity extends ListActivity {
 	
-	private ArrayList<String> listaTarefa = new ArrayList<String>();
+	private ArrayList<Tarefa> listaTarefa = new ArrayList<Tarefa>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, listaTarefa);
-		this.setListAdapter(listAdapter);
-	}
-	
-	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
+		setContentView(R.layout.activity_listagem);
 		
-		l.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		l.setItemChecked(position, true);
+		ListView list = (ListView)findViewById(R.id.list);
 		
-		Object item = this.getListAdapter().getItem(position);
-		Toast.makeText(this, item.toString(), Toast.LENGTH_LONG).show();
+		listaTarefa.add(new Tarefa(1, "Comprar pão", "Mamãe", "25/08/2015", "Baixa", Boolean.FALSE));
+		listaTarefa.add(new Tarefa(2, "Fazer o para casa", "Escola", "25/08/2015", "Media", Boolean.FALSE));
+		listaTarefa.add(new Tarefa(3, "Estudar para prova", "Escola", "25/09/2015", "Alta", Boolean.TRUE));
+		listaTarefa.add(new Tarefa(4, "Comprar pão", "Mamãe", "25/08/2015", "Baixa", Boolean.FALSE));
+		listaTarefa.add(new Tarefa(5, "Fazer o para casa", "Escola", "25/08/2015", "Media", Boolean.FALSE));
+		listaTarefa.add(new Tarefa(6, "Estudar para prova", "Escola", "25/09/2015", "Alta", Boolean.TRUE));
+
+		TarefaAdapter adapter = new TarefaAdapter(this, listaTarefa);
+		list.setAdapter(adapter);
+		
 	}
 	
 	private void novaTarefa() {
