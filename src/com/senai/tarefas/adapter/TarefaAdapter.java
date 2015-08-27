@@ -72,8 +72,7 @@ public class TarefaAdapter extends BaseAdapter {
 		
 		CheckBox cbConcluido = (CheckBox)convertView.findViewById(R.id.lcb_concluido);
 		cbConcluido.setChecked(tarefa.getConcluido());
-		
-		return null;
+		return convertView;
 	}
 
 	

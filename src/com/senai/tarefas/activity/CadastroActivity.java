@@ -19,7 +19,7 @@ public class CadastroActivity extends Activity {
 
 	private TarefaDao tarefaDao;
 	private Tarefa tarefa;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,9 +29,8 @@ public class CadastroActivity extends Activity {
 	
 	public void salvar(View view) {
 		capturarDados();
-		long id = tarefaDao.salvar(this.tarefa);
-		mostrarMensagem("A tarefa salva tem o id = " + id);
-//		mostrarListagem();
+		tarefaDao.salvar(this.tarefa);
+		mostrarListagem();
 	}
 	
 	private void mostrarListagem() {

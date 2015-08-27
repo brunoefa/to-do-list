@@ -27,7 +27,7 @@ public class TarefaDao {
 		database = dbHelper.getDatabase();
 	}
 
-	public long salvar(Tarefa t) {
+	public Tarefa salvar(Tarefa t) {
 
 		ContentValues values = new ContentValues();
 		values.put(AppDatabase.COLUMN_TAREFA , t.getTarefa());
@@ -36,17 +36,35 @@ public class TarefaDao {
 		values.put(AppDatabase.COLUMN_PRIORIDADE , t.getPrioridade());
 		
 		long insertId = database.insert(AppDatabase.TABLE_TAREFAS, null, values);
-		
-		return insertId;
+		Tarefa novaTarefa = buscar(insertId);
+		return novaTarefa;
 	}
 	
-	public void deletar(Tarefa t) {
+	public Tarefa buscar(long id) {
+		Tarefa t = null;
+		Cursor cursor = database.query(AppDatabase.TABLE_TAREFAS, colunas,
+				AppDatabase.COLUMN_ID + " = ?",
+				new String[] { String.valueOf(id) }, null, null, null);
 
+		if (cursor.moveToFirst()) {
+			t = cursorToTarefa(cursor);
+		}
+		cursor.close();
+		return t;
 	}
 	
-	public Tarefa buscar(Integer id) {
-		return null;
-	}
+	public Tarefa atualizar(Tarefa t) {
+		ContentValues values = new ContentValues();
+		values.put(AppDatabase.COLUMN_TAREFA , t.getTarefa());
+		values.put(AppDatabase.COLUMN_CATEGORIA , t.getCategoria());
+		values.put(AppDatabase.COLUMN_DATA_CONCLUSAO , t.getDataConclusao());
+		values.put(AppDatabase.COLUMN_PRIORIDADE , t.getPrioridade());
+		values.put(AppDatabase.COLUMN_CONCLUIDO , t.getConcluido());
+
+		long insertId = database.update(AppDatabase.TABLE_TAREFAS, values, AppDatabase.COLUMN_ID + " = ?", new String[] {String.valueOf(t.getId())});
+		Tarefa novaTarefa = buscar(insertId);
+		return novaTarefa;
+	}	
 	
 	public ArrayList<Tarefa> buscarTodos() {
 		Tarefa t = null;

@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.senai.tarefas.R;
 import com.senai.tarefas.adapter.TarefaAdapter;
+import com.senai.tarefas.dao.TarefaDao;
 import com.senai.tarefas.modelo.Tarefa;
 
 public class ListagemActivity extends ListActivity {
@@ -23,18 +24,13 @@ public class ListagemActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listagem);
 		
-		ListView list = (ListView)findViewById(R.id.list);
+		ListView list = getListView();
 		
-		listaTarefa.add(new Tarefa(1, "Comprar pão", "Mamãe", "25/08/2015", "Baixa", Boolean.FALSE));
-		listaTarefa.add(new Tarefa(2, "Fazer o para casa", "Escola", "25/08/2015", "Media", Boolean.FALSE));
-		listaTarefa.add(new Tarefa(3, "Estudar para prova", "Escola", "25/09/2015", "Alta", Boolean.TRUE));
-		listaTarefa.add(new Tarefa(4, "Comprar pão", "Mamãe", "25/08/2015", "Baixa", Boolean.FALSE));
-		listaTarefa.add(new Tarefa(5, "Fazer o para casa", "Escola", "25/08/2015", "Media", Boolean.FALSE));
-		listaTarefa.add(new Tarefa(6, "Estudar para prova", "Escola", "25/09/2015", "Alta", Boolean.TRUE));
+		TarefaDao dao = new TarefaDao(this);
+		listaTarefa = dao.buscarTodos();
 
 		TarefaAdapter adapter = new TarefaAdapter(this, listaTarefa);
 		list.setAdapter(adapter);
-		
 	}
 	
 	private void novaTarefa() {
