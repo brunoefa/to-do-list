@@ -82,6 +82,22 @@ public class TarefaDao {
 		return listaDeTarefas;
 	}
 	
+	public ArrayList<Tarefa> buscarNaoConcluidos() {
+		Tarefa t = null;
+		ArrayList<Tarefa> listaDeTarefas = new ArrayList<Tarefa>();
+		Cursor cursor = database.query(AppDatabase.TABLE_TAREFAS, colunas, AppDatabase.COLUMN_CONCLUIDO + " = ?", new String[] {"0"}, null, null, null);
+		
+		if (cursor.moveToFirst()) {
+			while (!cursor.isAfterLast()) {
+				t = cursorToTarefa(cursor);
+				listaDeTarefas.add(t);
+				cursor.moveToNext();
+			}			
+		}
+		cursor.close();
+		return listaDeTarefas;
+	}
+	
 	private Tarefa cursorToTarefa(Cursor cursor) {
 		Tarefa t = new Tarefa(
 				cursor.getInt(0),

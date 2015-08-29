@@ -15,6 +15,7 @@
     <string name="salvar">SALVAR</string>
     <string name="acao_cadastrar">Nova tarefa</string>
     <string name="acao_cancelar">Cancelar</string>
-    <string name="title_activity_listagem">ListagemActivity</string>
+    <string name="title_activity_listagem">Tarefas</string>
+    <string name="title_activity_cadastro">Nova Tarefa</string>
 
 </resources>

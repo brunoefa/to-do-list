@@ -7,5 +7,12 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/acao_cadastrar"/>
+    
+    <item
+        android:id="@+id/acao_mostrar_concluidos"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/checkicon"
+        android:title="Mostrar concluidos"/>
 
 </menu>

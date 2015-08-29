@@ -9,10 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Toast;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.senai.tarefas.R;
+import com.senai.tarefas.dao.TarefaDao;
 import com.senai.tarefas.modelo.Tarefa;
 
 
@@ -20,8 +24,10 @@ public class TarefaAdapter extends BaseAdapter {
 
 	private List<Tarefa> listaTarefas;
 	private LayoutInflater inflater;
+	private Context currentContext;
 	
 	public TarefaAdapter(Context context, List<Tarefa> listaTarefas) {
+		this.currentContext = context;
 		this.listaTarefas = listaTarefas;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -49,7 +55,7 @@ public class TarefaAdapter extends BaseAdapter {
 	@SuppressLint("DefaultLocale")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Tarefa tarefa = listaTarefas.get(position);
+		final Tarefa tarefa = listaTarefas.get(position);
 		convertView = inflater.inflate(R.layout.item_tarefa, null);
 		
 		TextView tvTarefa = (TextView)convertView.findViewById(R.id.ltv_tarefa);
@@ -72,20 +78,24 @@ public class TarefaAdapter extends BaseAdapter {
 		
 		CheckBox cbConcluido = (CheckBox)convertView.findViewById(R.id.lcb_concluido);
 		cbConcluido.setChecked(tarefa.getConcluido());
+		
+		cbConcluido.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				boolean concluido = buttonView.isChecked();
+				atualizarTarefa(concluido, tarefa.getId());
+			}
+		});
+		
 		return convertView;
 	}
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private void atualizarTarefa(boolean concluido, Integer id) {
+		TarefaDao dao = new TarefaDao(currentContext);
+		Tarefa tarefa = dao.buscar(id);
+		tarefa.setConcluido(concluido);
+		dao.atualizar(tarefa);
+		Toast.makeText(currentContext, "Tarefa atualizada com sucesso!", Toast.LENGTH_LONG).show();
+	}
 }
